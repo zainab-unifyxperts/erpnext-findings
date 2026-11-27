@@ -1,0 +1,133 @@
+{
+ "actions": [],
+ "creation": "2026-11-24 00:00:00",
+ "description": "Slack connection and people for the Master Mind findings automation. Shopify and Extensiv credentials are NOT stored here; the existing integration apps are used.",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "slack_section",
+  "slack_bot_token",
+  "slack_channel_id",
+  "enable_slack_polling",
+  "column_break_slack",
+  "last_processed_timestamp",
+  "last_poll_at",
+  "last_poll_status",
+  "last_poll_error",
+  "people_section",
+  "jaden_slack_id",
+  "ian_slack_id",
+  "column_break_people",
+  "post_unconfirmed_causes"
+ ],
+ "fields": [
+  {
+   "fieldname": "slack_section",
+   "fieldtype": "Section Break",
+   "label": "Slack"
+  },
+  {
+   "description": "Bot User OAuth Token (xoxb-...) of the ERPNext Findings Slack app.",
+   "fieldname": "slack_bot_token",
+   "fieldtype": "Password",
+   "in_list_view": 1,
+   "label": "Slack Bot Token",
+   "reqd": 1
+  },
+  {
+   "description": "Channel where Master Mind posts and where approved replies are posted.",
+   "fieldname": "slack_channel_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Master Mind Channel ID",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "enable_slack_polling",
+   "fieldtype": "Check",
+   "label": "Enable Slack Polling"
+  },
+  {
+   "fieldname": "column_break_slack",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Newest Slack message ts already ingested. Managed by the poller.",
+   "fieldname": "last_processed_timestamp",
+   "fieldtype": "Data",
+   "label": "Last Processed Slack TS"
+  },
+  {
+   "fieldname": "last_poll_at",
+   "fieldtype": "Datetime",
+   "label": "Last Poll At"
+  },
+  {
+   "fieldname": "last_poll_status",
+   "fieldtype": "Select",
+   "label": "Last Poll Status",
+   "options": "\nSuccess\nFailed",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_poll_error",
+   "fieldtype": "Small Text",
+   "label": "Last Poll Error",
+   "read_only": 1
+  },
+  {
+   "fieldname": "people_section",
+   "fieldtype": "Section Break",
+   "label": "People"
+  },
+  {
+   "description": "Replies are written on behalf of Jaden.",
+   "fieldname": "jaden_slack_id",
+   "fieldtype": "Data",
+   "label": "Jaden Slack User ID"
+  },
+  {
+   "description": "Tagged in 'ERP/sync issues - Explanation'.",
+   "fieldname": "ian_slack_id",
+   "fieldtype": "Data",
+   "label": "Ian Slack User ID"
+  },
+  {
+   "fieldname": "column_break_people",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Off = a finding whose cause is not confirmed can never be approved for posting.",
+   "fieldname": "post_unconfirmed_causes",
+   "fieldtype": "Check",
+   "label": "Allow Posting Unconfirmed Causes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-11-24 15:49:10.185630",
+ "modified_by": "Administrator",
+ "module": "Erpnext Findings",
+ "name": "Mastermind Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

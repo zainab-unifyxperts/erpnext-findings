@@ -1,0 +1,152 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-24 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "slack_section",
+  "slack_message_ts",
+  "thread_ts",
+  "column_break_slack",
+  "channel_id",
+  "message_datetime",
+  "message_section",
+  "message_text",
+  "parsing_section",
+  "parsing_status",
+  "findings_count",
+  "column_break_parse",
+  "parser_error"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "MMS-.#####",
+   "default": "MMS-.#####",
+   "reqd": 1,
+   "set_only_once": 1,
+   "hidden": 1
+  },
+  {
+   "fieldname": "slack_section",
+   "fieldtype": "Section Break",
+   "label": "Slack Message"
+  },
+  {
+   "fieldname": "slack_message_ts",
+   "fieldtype": "Data",
+   "label": "Slack Message TS",
+   "reqd": 1,
+   "unique": 1,
+   "set_only_once": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "thread_ts",
+   "fieldtype": "Data",
+   "label": "Thread TS",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_slack",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "channel_id",
+   "fieldtype": "Data",
+   "label": "Channel ID",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "message_datetime",
+   "fieldtype": "Datetime",
+   "label": "Message Time",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "message_section",
+   "fieldtype": "Section Break",
+   "label": "Raw Text"
+  },
+  {
+   "fieldname": "message_text",
+   "fieldtype": "Long Text",
+   "label": "Message Text",
+   "reqd": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "parsing_section",
+   "fieldtype": "Section Break",
+   "label": "Parsing"
+  },
+  {
+   "fieldname": "parsing_status",
+   "fieldtype": "Select",
+   "label": "Parsing Status",
+   "options": "Pending\nParsed\nNo Findings\nFailed",
+   "default": "Pending",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "findings_count",
+   "fieldtype": "Int",
+   "label": "Findings Created",
+   "read_only": 1,
+   "default": "0"
+  },
+  {
+   "fieldname": "column_break_parse",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "parser_error",
+   "fieldtype": "Small Text",
+   "label": "Parser Error",
+   "read_only": 1,
+   "depends_on": "eval:doc.parsing_status=='Failed'"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-11-24 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Erpnext Findings",
+ "name": "Mastermind Slack Message",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "report": 1,
+   "export": 1,
+   "email": 1,
+   "print": 1,
+   "share": 1,
+   "delete": 1
+  },
+  {
+   "role": "Findings Approver",
+   "read": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "autoname": "naming_series:",
+ "naming_rule": "By \"Naming Series\" field",
+ "search_fields": "slack_message_ts,parsing_status"
+}
