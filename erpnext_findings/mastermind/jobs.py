@@ -171,4 +171,3 @@ def post_approved():
 		frappe.db.commit()
 
 #Added a comment
-#Testing the git commands
